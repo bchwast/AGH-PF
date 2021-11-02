@@ -14,5 +14,5 @@ threeEqual :: (Int, Int, Int) -> Bool
 threeEqual (x, y, z) = x == y && x == z
 
 triangleArea :: (Double, Double, Double) -> Double
-triangleArea (a, b, c) = sqrt (((a + b + c) / 2)* ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c))
+triangleArea (a, b, c) = sqrt (((a + b + c) / 2) * ((a + b + c) / 2 - a) * ((a + b + c) / 2 - b) * ((a + b + c) / 2 - c))
 

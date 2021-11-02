@@ -7,10 +7,8 @@ isItTheAnswer "Love" = True
 isItTheAnswer _      = False
 
 or' :: (Bool, Bool) -> Bool
-or' (True, True) = True
-or' (True, False) = True
-or' (False, True) = True
-or' _             = False
+or' (False, False) = False
+or' _              = True
 
 and' :: (Bool, Bool) -> Bool
 and' (True, True) = True
