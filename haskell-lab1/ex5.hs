@@ -16,17 +16,27 @@ min2Int (a, b) = if a > b
                  else a
 
 min3Int :: (Int, Int, Int) -> Int
-min3Int (a, b, c) = if a < min2Int (b, c)
+min3Int (a, b, c) = if a > b
+                    then
+                        if b > c
+                        then c
+                        else b
+                    else if a > c
+                        then c
+                        else a
+
+min3IntMin2 :: (Int, Int, Int) -> Int
+min3IntMin2 (a, b, c) = if a < min2Int (b, c)
                     then a
                     else min2Int (b, c)
 
 toUpper :: Char -> Char
-toUpper a = if fromEnum a > 90
+toUpper a = if fromEnum a > 96 && fromEnum a < 123
             then toEnum (fromEnum a - 32)
             else a
 
 toLower :: Char -> Char
-toLower a = if fromEnum a < 90
+toLower a = if fromEnum a > 64 && fromEnum a < 91
             then toEnum (fromEnum a + 32)
             else a
 

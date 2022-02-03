@@ -15,8 +15,8 @@ and' (True, True) = True
 and' _            = False
 
 nand' :: (Bool, Bool) -> Bool
-nand' (True, True) = False
-nand' _            = True
+nand' (False, False) = True
+nand' _              = False
 
 xor' :: (Bool, Bool) -> Bool
 xor' (True, False) = True
