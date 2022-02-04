@@ -9,9 +9,23 @@ isPrime n
 
 b = length [i | i <- [1..10000], isPrime i]
 
+primes :: [Int]
+primes = eratoSieve [2..]
+  where
+    eratoSieve ::  [Int] -> [Int]
+    eratoSieve (p : xs) = p : eratoSieve [x | x <- xs, x `mod` p /= 0]
+
+isPrime' :: Integral t => t -> Bool
+isPrime' n = a `elem` take a primes
+  where
+    a = fromIntegral n
+
+howManyPrimes :: Integral a => a -> Int
+howManyPrimes n
+    | n < 2     = 0
+    | otherwise = length [x | x <- [1..n], isPrime x  ]
+
 allEqual :: Eq a => [a] -> Bool
 allEqual xs
-    | xs == []                                          = True
-    | length xs == 1                                    = True
-    | head xs == head (tail xs) && allEqual (tail xs)   = True
-    | otherwise                                         = False
+    | xs == []  = True
+    | otherwise = all (== head xs) xs

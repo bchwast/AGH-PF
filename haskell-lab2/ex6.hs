@@ -40,6 +40,14 @@ selectEven []     = []
 selectEven (x:xs) = if x `mod` 2 == 0 then [x] ++ selectEven xs
                     else selectEven xs
 
-arth :: Fractional t => [t] -> t
+arth :: (Real a, Fractional b) => [a] -> b
 arth [] = 0
-arth s  = (sum' s) / (length' s)
+arth s  = realToFrac (sum s) / fromIntegral (length s)
+
+geo :: (Real a, Fractional b) => [a] -> b
+geo [] = 0
+geo s  = realToFrac (realToFrac (product s) ** (1 / fromIntegral (length s)))
+
+getAvg:: (Real a, Fractional b) => [a] -> (b, b)
+getAvg [] = (0, 0)
+getAvg s  = (arth s, geo s)
